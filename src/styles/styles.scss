@@ -1,0 +1,28 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+  color: $gray;
+  font-family: $font-main;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+::selection {
+  background: #000000;
+  color: $white;
+}

@@ -1,9 +1,9 @@
 <template>
   <div class="chat-list-message">
     <ul>
-        <li v-for="message in CHAT_DATA" :key="message">
-            {{ message }}
-        </li>
+      <li v-for="message in CHAT_DATA" :key="message">
+        {{ message }}
+      </li>
     </ul>
   </div>
 </template>
@@ -14,7 +14,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "ChatListMessage",
   computed: {
-    ...mapGetters(['CHAT_DATA']),
+    ...mapGetters(["CHAT_DATA"]),
   },
   components: {},
   data: () => ({}),
@@ -23,5 +23,6 @@ export default {
 
 <style scoped>
 .chat-list-message {
+  text-align: left;
 }
 </style>
