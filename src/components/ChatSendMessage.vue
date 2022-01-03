@@ -1,7 +1,7 @@
 <template>
   <div class="chat">
-    <input type="text" placeholder="user" v-model="user" />
-    <input type="text" placeholder="text" v-model="text" @keyup.enter="sendMessage" />
+    <input type="text" placeholder="name" v-model="user" />
+    <input type="text" placeholder="message" v-model="text" @keyup.enter="sendMessage" />
     <button @click="sendMessage">Отправить</button>
   </div>
 </template>
@@ -13,10 +13,9 @@ export default {
   name: "ChatSendMessage",
   components: {},
   data: () => ({
-    text: "",
-    messages: [],
-    typing: false,
     user: null,
+    text: "",
+    typing: false,
   }),
   methods: {
     sendMessage() {
@@ -29,5 +28,8 @@ export default {
 
 <style scoped>
 .chat {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 </style>

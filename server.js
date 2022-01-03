@@ -12,22 +12,18 @@ const port = "3000"
 // });
 
 io.on('connection', (socket) => {
+  console.log('NEW CONNECTION IN SOCKET SERVER');
 
-  console.log('a user connected  - START SERVER');
+  socket.emit('connections', io.sockets.server.engine.clientsCount);
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
-  // socket.on('my message', (msg) => {
-  //   console.log('message: ' + msg);
-  //   io.emit('my broadcast', `server: ${msg}`);
-  // });
-
   socket.on('chat-message', (data) => {
-    // socket.broadcast.emit('chat-message', (data));
     console.log(data);
-    io.emit('chat-message', data);
+    io.emit('chat-message', data); // Отправить всем в том числе отправляющему
+    // socket.broadcast.emit('chat-message', (data)); //  Отправить всем кроме отправляющего
   });
 
 });

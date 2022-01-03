@@ -14,6 +14,10 @@ class SocketioService {
       console.log(data);
       store.dispatch('SET_CHAT_DATA', data);
     });
+
+    this.socket.on('connections', (data) => {
+      store.dispatch('SET_CONNECTIONS_COUNT', data);
+  });
   }
 
   sendMessage(user, message) {
