@@ -19,10 +19,17 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
   });
 
-  socket.on('my message', (msg) => {
-	console.log('message: ' + msg);
-    io.emit('my broadcast', `server: ${msg}`);
+  // socket.on('my message', (msg) => {
+  //   console.log('message: ' + msg);
+  //   io.emit('my broadcast', `server: ${msg}`);
+  // });
+
+  socket.on('chat-message', (data) => {
+    // socket.broadcast.emit('chat-message', (data));
+    console.log(data);
+    io.emit('chat-message', data);
   });
+
 });
 
 http.listen(port, () => {

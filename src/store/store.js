@@ -2,21 +2,21 @@ import { createStore } from 'vuex';
 
 const store = createStore({
 	state: {
-		message: []
+		chatData: []
 	},
 	mutations: {
-    SET_MESSAGE: (state, payload) => {
-      state.message.push(payload);
+    SET_CHAT_DATA: (state, data) => {
+      state.chatData.push(data);
       localStorage.setItem('message', JSON.stringify(state.message));
     },
 	},
 	actions: {
-		SET_MESSAGE({ commit }, payload) {
-			commit('SET_MESSAGE', payload);
+		SET_CHAT_DATA({ commit }, data) {
+			commit('SET_CHAT_DATA', data);
 		},
 	},
 	getters: {
-		CHAT_DATA: (state) => state.message
+		CHAT_DATA: (state) => state.chatData
 	}
 })
 

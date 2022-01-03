@@ -1,6 +1,7 @@
 <template>
   <div class="chat">
-    <input type="text" v-model="text" @keyup.enter="sendMessage" />
+    <input type="text" placeholder="user" v-model="user" />
+    <input type="text" placeholder="text" v-model="text" @keyup.enter="sendMessage" />
     <button @click="sendMessage">Отправить</button>
   </div>
 </template>
@@ -13,12 +14,13 @@ export default {
   components: {},
   data: () => ({
     text: "",
+    messages: [],
     typing: false,
-    username: null,
+    user: null,
   }),
   methods: {
     sendMessage() {
-      SocketioService.sendMessage(this.text);
+      SocketioService.sendMessage(this.user, this.text);
       this.text = "";
     },
   },

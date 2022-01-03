@@ -9,20 +9,26 @@ class SocketioService {
     this.socket = io('http://localhost:3000');
     this.socket.emit('my message', 'Hello there from Vue - START CLIENT');
 
-    this.socket.on('my broadcast', (data) => {
+    this.socket.on('chat-message', (data) => {
+      // Слушаю входящие сообщения
       console.log(data);
-      store.dispatch('SET_MESSAGE', data);
+      store.dispatch('SET_CHAT_DATA', data);
     });
   }
 
-  sendMessage(text) {
-    this.socket.emit('my message', text);
+  sendMessage(user, message) {
+    // Отправляю сообщения
+    // this.socket.emit('my message', text);
+      this.socket.emit('chat-message', {
+        user,
+        message
+    });
   }
 
   disconnect() {
-      if (this.socket) {
-          this.socket.disconnect();
-      }
+    if (this.socket) {
+        this.socket.disconnect();
+    }
   }
 }
 

@@ -1,8 +1,8 @@
 <template>
   <div class="chat-list-message">
     <ul>
-      <li v-for="message in CHAT_DATA" :key="message">
-        {{ message }}
+      <li v-for="item in CHAT_DATA" :key="item.message">
+        {{ item.user }}: {{ item.message }}
       </li>
     </ul>
   </div>
@@ -16,12 +16,12 @@ export default {
   computed: {
     ...mapGetters(["CHAT_DATA"]),
   },
-  components: {},
-  data: () => ({}),
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
 .chat-list-message {
   text-align: left;
 }
